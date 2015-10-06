@@ -3,23 +3,23 @@ class HashTable(object):
 	size = 12
 
 	def __init__(self):
-		this.slots = [None]*self.size
+		self.slots = [None]*self.size
 
 	def set(self, key, value):
 		index = hash(key) % self.size
 
 		if this.slots[index] == None:
-			this.slots[index] = [(key, value)]
+			self.slots[index] = [(key, value)]
 		else:
-			this.slots[index].append((key, value))
+			self.slots[index].append((key, value))
 
 	def get(self, key):
 		index = hash(key) % self.size
 
-		if this.slots[index] == None:
+		if self.slots[index] == None:
 			return None
 
-		for item in this.slots[index]:
+		for item in self.slots[index]:
 			if item[0] == key:
 				return item
 
@@ -28,17 +28,17 @@ class HashTable(object):
 	def update(self, key, value):
 		index = hash(key) % self.size
 
-		if this.slots[index] == None:
+		if self.slots[index] == None:
 			return None
 
-		for item in this.slots[index]:
+		for item in self.slots[index]:
 			if item[0] == key:
 				item[1] = value
 
 	def keys(self):
 		keys_list = []
 
-		for bucket in this.slots:
+		for bucket in self.slots:
 			if bucket != None:
 				for item in bucket:
 					keys_list.append(item[0])

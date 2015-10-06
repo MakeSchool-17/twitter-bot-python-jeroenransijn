@@ -1,8 +1,4 @@
-class LinkedListNode(object):
-
-	def __init__(self, data):
-		self.data = data
-		self.next_node = None
+from linked_list_node import LinkedListNode
 
 # Singly linked
 class LinkedList(object):
@@ -36,6 +32,17 @@ class LinkedList(object):
 			return node.data
 		else:
 			return LinkedList.recursive_find_on_data(node.next_node, func)
+
+	def each(self, func):
+		return self.recursive_each(self.tail, func)
+
+	@staticmethod
+	def recursive_each(node, func):
+		if node == None:
+			return
+		else:
+			func(node)
+			LinkedList.recursive_each(node.next_node, func)
 
 	# Returns nodes[0] = prev_node, nodes[1] = node instead of node.data
 	@staticmethod
@@ -77,14 +84,16 @@ class LinkedList(object):
 			return False
 
 
-mylist = LinkedList()
+# Test code
 
-mylist.append('a')
-mylist.append('b')
-mylist.append('c')
+# mylist = LinkedList()
 
-print(mylist.head.data) # => 'a'
-print(mylist.tail.data) # => 'c'
-print(mylist.find(lambda data: data > 'b')) # => 'c'
-print(mylist.delete('a'))
-print(mylist.head.data)  # => 'b')
+# mylist.append('a')
+# mylist.append('b')
+# mylist.append('c')
+
+# print(mylist.head.data) # => 'a'
+# print(mylist.tail.data) # => 'c'
+# print(mylist.find(lambda data: data > 'b')) # => 'c'
+# print(mylist.delete('a'))
+# print(mylist.head.data)  # => 'b')
